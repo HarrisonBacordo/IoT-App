@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      MQTT Tutorial
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-card>
+  <ion-card-content>Status: <b>{{mqttStatus}}</b></ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-content>Last known location: <b>{{lastLocation}}</b></ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-card-content>Time since most recent motion: <b>{{lastMotion}} minutes</b></ion-card-content>
+</ion-card>
+
+<ion-row justify-content-center align-items-center>
+	<button ion-button (click)="connect()">Connect</button>
+	<button ion-button (click)="disconnect()">Disconnect</button>
+</ion-row>
+
+
+<ion-card>
+  <ion-card-header>Message Received:</ion-card-header>
+  <ion-card-content>{{message}}</ion-card-content>
+</ion-card>
+
+<ion-row>
+  <div style="margin: auto auto">
+    <div style="display: block">
+	  <canvas baseChart *ngIf="barChartData"
+			width="750"
+			height="500"
+			[datasets]="barChartData"
+			[labels]="barChartLabels"
+			[options]="barChartOptions"
+			[legend]="barChartLegend"
+			[chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</ion-row>
+
+</ion-content>
